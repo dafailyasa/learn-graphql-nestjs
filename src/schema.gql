@@ -1,0 +1,54 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ProductDTO {
+  _id: String!
+  title: String!
+  ownerId: String!
+  price: Float!
+  quantity: Float!
+  description: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  products: [ProductDTO!]!
+  findProductsByOwnerId(input: ownerId!): [ProductDTO!]!
+  findProductById(input: productId!): ProductDTO!
+}
+
+input ownerId {
+  id: String!
+}
+
+input productId {
+  id: String!
+}
+
+type Mutation {
+  createProduct(input: createProduct!): ProductDTO!
+  updateProduct(input: updateProduct!): ProductDTO!
+  deleteProduct(input: productId!): Boolean!
+}
+
+input createProduct {
+  title: String!
+  price: Float!
+  quantity: Float!
+  description: String!
+}
+
+input updateProduct {
+  id: String!
+  title: String!
+  price: Float!
+  quantity: Float!
+  description: String!
+}
